@@ -1,7 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <title>Code coverage report for node-npmtest-got/got/index.js</title>
+<html lang="en"><head>
+    <title>Code coverage report for node-npmtest-got/node_modules/got/index.js</title>
     <meta charset="utf-8">
     <style>
         body, html {
@@ -194,7 +192,7 @@
     <h1 style="font-weight: bold;">
         <a href="https://github.com/npmtest/node-npmtest-got">npmtest-got (v0.0.1)</a>
     </h1>
-    <h1>Code coverage report for <span class="entity">node-npmtest-got/got/index.js</span></h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-got/node_modules/got/index.js</span></h1>
     <h2>
         
         Statements: <span class="metric">17.91% <small>(36 / 201)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -210,11 +208,11 @@
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-got/got/</a> &#187; index.js</div>
+    <div class="path"><a href="../../../index.html">All files</a> » <a href="index.html">node-npmtest-got/node_modules/got/</a> » index.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
-<tr><td class="line-count">1
+<tbody><tr><td class="line-count">1
 2
 3
 4
@@ -964,195 +962,195 @@ const isRetryAllowed = require('is-retry-allowed');
 const Buffer = require('safe-buffer').Buffer;
 const pkg = require('./package');
 &nbsp;
-<span class="fstat-no" title="function not covered" >function requestAsEventEmitter(opts) {</span>
-<span class="cstat-no" title="statement not covered" >	opts = opts || {};</span>
+<span class="fstat-no" title="function not covered">function requestAsEventEmitter(opts) {</span>
+<span class="cstat-no" title="statement not covered">	opts = opts || {};</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	const ee = new EventEmitter();</span>
-<span class="cstat-no" title="statement not covered" >	const requestUrl = opts.href || urlLib.resolve(urlLib.format(opts), opts.path);</span>
-<span class="cstat-no" title="statement not covered" >	let redirectCount = 0;</span>
-<span class="cstat-no" title="statement not covered" >	let retryCount = 0;</span>
-<span class="cstat-no" title="statement not covered" >	let redirectUrl;</span>
+<span class="cstat-no" title="statement not covered">	const ee = new EventEmitter();</span>
+<span class="cstat-no" title="statement not covered">	const requestUrl = opts.href || urlLib.resolve(urlLib.format(opts), opts.path);</span>
+<span class="cstat-no" title="statement not covered">	let redirectCount = 0;</span>
+<span class="cstat-no" title="statement not covered">	let retryCount = 0;</span>
+<span class="cstat-no" title="statement not covered">	let redirectUrl;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	const get = opts =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >		const fn = opts.protocol === 'https:' ? https : http;</span>
+<span class="cstat-no" title="statement not covered">	const get = opts =&gt; {</span>
+<span class="cstat-no" title="statement not covered">		const fn = opts.protocol === 'https:' ? https : http;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		const req = fn.request(opts, res =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >			const statusCode = res.statusCode;</span>
+<span class="cstat-no" title="statement not covered">		const req = fn.request(opts, res =&gt; {</span>
+<span class="cstat-no" title="statement not covered">			const statusCode = res.statusCode;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >			if (isRedirect(statusCode) &amp;&amp; opts.followRedirect &amp;&amp; 'location' in res.headers &amp;&amp; (opts.method === 'GET' || opts.method === 'HEAD')) {</span>
-<span class="cstat-no" title="statement not covered" >				res.resume();</span>
+<span class="cstat-no" title="statement not covered">			if (isRedirect(statusCode) &amp;&amp; opts.followRedirect &amp;&amp; 'location' in res.headers &amp;&amp; (opts.method === 'GET' || opts.method === 'HEAD')) {</span>
+<span class="cstat-no" title="statement not covered">				res.resume();</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >				if (++redirectCount &gt; 10) {</span>
-<span class="cstat-no" title="statement not covered" >					ee.emit('error', new got.MaxRedirectsError(statusCode, opts), null, res);</span>
-<span class="cstat-no" title="statement not covered" >					return;</span>
+<span class="cstat-no" title="statement not covered">				if (++redirectCount &gt; 10) {</span>
+<span class="cstat-no" title="statement not covered">					ee.emit('error', new got.MaxRedirectsError(statusCode, opts), null, res);</span>
+<span class="cstat-no" title="statement not covered">					return;</span>
 				}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >				const bufferString = Buffer.from(res.headers.location, 'binary').toString();</span>
+<span class="cstat-no" title="statement not covered">				const bufferString = Buffer.from(res.headers.location, 'binary').toString();</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >				redirectUrl = urlLib.resolve(urlLib.format(opts), bufferString);</span>
-<span class="cstat-no" title="statement not covered" >				const redirectOpts = Object.assign({}, opts, urlLib.parse(redirectUrl));</span>
+<span class="cstat-no" title="statement not covered">				redirectUrl = urlLib.resolve(urlLib.format(opts), bufferString);</span>
+<span class="cstat-no" title="statement not covered">				const redirectOpts = Object.assign({}, opts, urlLib.parse(redirectUrl));</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >				ee.emit('redirect', res, redirectOpts);</span>
+<span class="cstat-no" title="statement not covered">				ee.emit('redirect', res, redirectOpts);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >				get(redirectOpts);</span>
+<span class="cstat-no" title="statement not covered">				get(redirectOpts);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >				return;</span>
+<span class="cstat-no" title="statement not covered">				return;</span>
 			}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >			setImmediate(() =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >				const response = typeof unzipResponse === 'function' &amp;&amp; req.method !== 'HEAD' ? unzipResponse(res) : res;</span>
-<span class="cstat-no" title="statement not covered" >				response.url = redirectUrl || requestUrl;</span>
-<span class="cstat-no" title="statement not covered" >				response.requestUrl = requestUrl;</span>
+<span class="cstat-no" title="statement not covered">			setImmediate(() =&gt; {</span>
+<span class="cstat-no" title="statement not covered">				const response = typeof unzipResponse === 'function' &amp;&amp; req.method !== 'HEAD' ? unzipResponse(res) : res;</span>
+<span class="cstat-no" title="statement not covered">				response.url = redirectUrl || requestUrl;</span>
+<span class="cstat-no" title="statement not covered">				response.requestUrl = requestUrl;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >				ee.emit('response', response);</span>
+<span class="cstat-no" title="statement not covered">				ee.emit('response', response);</span>
 			});
 		});
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		req.once('error', err =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >			const backoff = opts.retries(++retryCount, err);</span>
+<span class="cstat-no" title="statement not covered">		req.once('error', err =&gt; {</span>
+<span class="cstat-no" title="statement not covered">			const backoff = opts.retries(++retryCount, err);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >			if (backoff) {</span>
-<span class="cstat-no" title="statement not covered" >				setTimeout(get, backoff, opts);</span>
-<span class="cstat-no" title="statement not covered" >				return;</span>
+<span class="cstat-no" title="statement not covered">			if (backoff) {</span>
+<span class="cstat-no" title="statement not covered">				setTimeout(get, backoff, opts);</span>
+<span class="cstat-no" title="statement not covered">				return;</span>
 			}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >			ee.emit('error', new got.RequestError(err, opts));</span>
+<span class="cstat-no" title="statement not covered">			ee.emit('error', new got.RequestError(err, opts));</span>
 		});
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		if (opts.gotTimeout) {</span>
-<span class="cstat-no" title="statement not covered" >			timedOut(req, opts.gotTimeout);</span>
+<span class="cstat-no" title="statement not covered">		if (opts.gotTimeout) {</span>
+<span class="cstat-no" title="statement not covered">			timedOut(req, opts.gotTimeout);</span>
 		}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		setImmediate(() =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >			ee.emit('request', req);</span>
+<span class="cstat-no" title="statement not covered">		setImmediate(() =&gt; {</span>
+<span class="cstat-no" title="statement not covered">			ee.emit('request', req);</span>
 		});
 	};
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	get(opts);</span>
-<span class="cstat-no" title="statement not covered" >	return ee;</span>
+<span class="cstat-no" title="statement not covered">	get(opts);</span>
+<span class="cstat-no" title="statement not covered">	return ee;</span>
 }
 &nbsp;
-<span class="fstat-no" title="function not covered" >function asPromise(opts) {</span>
-<span class="cstat-no" title="statement not covered" >	return new Promise((resolve, reject) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >		const ee = requestAsEventEmitter(opts);</span>
+<span class="fstat-no" title="function not covered">function asPromise(opts) {</span>
+<span class="cstat-no" title="statement not covered">	return new Promise((resolve, reject) =&gt; {</span>
+<span class="cstat-no" title="statement not covered">		const ee = requestAsEventEmitter(opts);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		ee.on('request', req =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >			if (isStream(opts.body)) {</span>
-<span class="cstat-no" title="statement not covered" >				opts.body.pipe(req);</span>
-<span class="cstat-no" title="statement not covered" >				opts.body = undefined;</span>
-<span class="cstat-no" title="statement not covered" >				return;</span>
+<span class="cstat-no" title="statement not covered">		ee.on('request', req =&gt; {</span>
+<span class="cstat-no" title="statement not covered">			if (isStream(opts.body)) {</span>
+<span class="cstat-no" title="statement not covered">				opts.body.pipe(req);</span>
+<span class="cstat-no" title="statement not covered">				opts.body = undefined;</span>
+<span class="cstat-no" title="statement not covered">				return;</span>
 			}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >			req.end(opts.body);</span>
+<span class="cstat-no" title="statement not covered">			req.end(opts.body);</span>
 		});
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		ee.on('response', res =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >			const stream = opts.encoding === null ? getStream.buffer(res) : getStream(res, opts);</span>
+<span class="cstat-no" title="statement not covered">		ee.on('response', res =&gt; {</span>
+<span class="cstat-no" title="statement not covered">			const stream = opts.encoding === null ? getStream.buffer(res) : getStream(res, opts);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >			stream</span>
-				.catch(err =&gt; <span class="cstat-no" title="statement not covered" >reject(new got.ReadError(err, opts)))</span>
+<span class="cstat-no" title="statement not covered">			stream</span>
+				.catch(err =&gt; <span class="cstat-no" title="statement not covered">reject(new got.ReadError(err, opts)))</span>
 				.then(data =&gt; {
-<span class="cstat-no" title="statement not covered" >					const statusCode = res.statusCode;</span>
-<span class="cstat-no" title="statement not covered" >					const limitStatusCode = opts.followRedirect ? 299 : 399;</span>
+<span class="cstat-no" title="statement not covered">					const statusCode = res.statusCode;</span>
+<span class="cstat-no" title="statement not covered">					const limitStatusCode = opts.followRedirect ? 299 : 399;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >					res.body = data;</span>
+<span class="cstat-no" title="statement not covered">					res.body = data;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >					if (opts.json &amp;&amp; res.body) {</span>
-<span class="cstat-no" title="statement not covered" >						try {</span>
-<span class="cstat-no" title="statement not covered" >							res.body = JSON.parse(res.body);</span>
+<span class="cstat-no" title="statement not covered">					if (opts.json &amp;&amp; res.body) {</span>
+<span class="cstat-no" title="statement not covered">						try {</span>
+<span class="cstat-no" title="statement not covered">							res.body = JSON.parse(res.body);</span>
 						} catch (e) {
-<span class="cstat-no" title="statement not covered" >							throw new got.ParseError(e, statusCode, opts, data);</span>
+<span class="cstat-no" title="statement not covered">							throw new got.ParseError(e, statusCode, opts, data);</span>
 						}
 					}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >					if (statusCode &lt; 200 || statusCode &gt; limitStatusCode) {</span>
-<span class="cstat-no" title="statement not covered" >						throw new got.HTTPError(statusCode, opts);</span>
+<span class="cstat-no" title="statement not covered">					if (statusCode &lt; 200 || statusCode &gt; limitStatusCode) {</span>
+<span class="cstat-no" title="statement not covered">						throw new got.HTTPError(statusCode, opts);</span>
 					}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >					resolve(res);</span>
+<span class="cstat-no" title="statement not covered">					resolve(res);</span>
 				})
 				.catch(err =&gt; {
-<span class="cstat-no" title="statement not covered" >					Object.defineProperty(err, 'response', {value: res});</span>
-<span class="cstat-no" title="statement not covered" >					reject(err);</span>
+<span class="cstat-no" title="statement not covered">					Object.defineProperty(err, 'response', {value: res});</span>
+<span class="cstat-no" title="statement not covered">					reject(err);</span>
 				});
 		});
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		ee.on('error', reject);</span>
+<span class="cstat-no" title="statement not covered">		ee.on('error', reject);</span>
 	});
 }
 &nbsp;
-<span class="fstat-no" title="function not covered" >function asStream(opts) {</span>
-<span class="cstat-no" title="statement not covered" >	const input = new PassThrough();</span>
-<span class="cstat-no" title="statement not covered" >	const output = new PassThrough();</span>
-<span class="cstat-no" title="statement not covered" >	const proxy = duplexer3(input, output);</span>
+<span class="fstat-no" title="function not covered">function asStream(opts) {</span>
+<span class="cstat-no" title="statement not covered">	const input = new PassThrough();</span>
+<span class="cstat-no" title="statement not covered">	const output = new PassThrough();</span>
+<span class="cstat-no" title="statement not covered">	const proxy = duplexer3(input, output);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	if (opts.json) {</span>
-<span class="cstat-no" title="statement not covered" >		throw new Error('got can not be used as stream when options.json is used');</span>
+<span class="cstat-no" title="statement not covered">	if (opts.json) {</span>
+<span class="cstat-no" title="statement not covered">		throw new Error('got can not be used as stream when options.json is used');</span>
 	}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	if (opts.body) {</span>
-<span class="cstat-no" title="statement not covered" >		proxy.write = () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >			throw new Error('got\'s stream is not writable when options.body is used');</span>
+<span class="cstat-no" title="statement not covered">	if (opts.body) {</span>
+<span class="cstat-no" title="statement not covered">		proxy.write = () =&gt; {</span>
+<span class="cstat-no" title="statement not covered">			throw new Error('got\'s stream is not writable when options.body is used');</span>
 		};
 	}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	const ee = requestAsEventEmitter(opts);</span>
+<span class="cstat-no" title="statement not covered">	const ee = requestAsEventEmitter(opts);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	ee.on('request', req =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >		proxy.emit('request', req);</span>
+<span class="cstat-no" title="statement not covered">	ee.on('request', req =&gt; {</span>
+<span class="cstat-no" title="statement not covered">		proxy.emit('request', req);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		if (isStream(opts.body)) {</span>
-<span class="cstat-no" title="statement not covered" >			opts.body.pipe(req);</span>
-<span class="cstat-no" title="statement not covered" >			return;</span>
+<span class="cstat-no" title="statement not covered">		if (isStream(opts.body)) {</span>
+<span class="cstat-no" title="statement not covered">			opts.body.pipe(req);</span>
+<span class="cstat-no" title="statement not covered">			return;</span>
 		}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		if (opts.body) {</span>
-<span class="cstat-no" title="statement not covered" >			req.end(opts.body);</span>
-<span class="cstat-no" title="statement not covered" >			return;</span>
+<span class="cstat-no" title="statement not covered">		if (opts.body) {</span>
+<span class="cstat-no" title="statement not covered">			req.end(opts.body);</span>
+<span class="cstat-no" title="statement not covered">			return;</span>
 		}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		if (opts.method === 'POST' || opts.method === 'PUT' || opts.method === 'PATCH') {</span>
-<span class="cstat-no" title="statement not covered" >			input.pipe(req);</span>
-<span class="cstat-no" title="statement not covered" >			return;</span>
+<span class="cstat-no" title="statement not covered">		if (opts.method === 'POST' || opts.method === 'PUT' || opts.method === 'PATCH') {</span>
+<span class="cstat-no" title="statement not covered">			input.pipe(req);</span>
+<span class="cstat-no" title="statement not covered">			return;</span>
 		}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		req.end();</span>
+<span class="cstat-no" title="statement not covered">		req.end();</span>
 	});
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	ee.on('response', res =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >		const statusCode = res.statusCode;</span>
+<span class="cstat-no" title="statement not covered">	ee.on('response', res =&gt; {</span>
+<span class="cstat-no" title="statement not covered">		const statusCode = res.statusCode;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		res.pipe(output);</span>
+<span class="cstat-no" title="statement not covered">		res.pipe(output);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		if (statusCode &lt; 200 || statusCode &gt; 299) {</span>
-<span class="cstat-no" title="statement not covered" >			proxy.emit('error', new got.HTTPError(statusCode, opts), null, res);</span>
-<span class="cstat-no" title="statement not covered" >			return;</span>
+<span class="cstat-no" title="statement not covered">		if (statusCode &lt; 200 || statusCode &gt; 299) {</span>
+<span class="cstat-no" title="statement not covered">			proxy.emit('error', new got.HTTPError(statusCode, opts), null, res);</span>
+<span class="cstat-no" title="statement not covered">			return;</span>
 		}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		proxy.emit('response', res);</span>
+<span class="cstat-no" title="statement not covered">		proxy.emit('response', res);</span>
 	});
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	ee.on('redirect', proxy.emit.bind(proxy, 'redirect'));</span>
-<span class="cstat-no" title="statement not covered" >	ee.on('error', proxy.emit.bind(proxy, 'error'));</span>
+<span class="cstat-no" title="statement not covered">	ee.on('redirect', proxy.emit.bind(proxy, 'redirect'));</span>
+<span class="cstat-no" title="statement not covered">	ee.on('error', proxy.emit.bind(proxy, 'error'));</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	return proxy;</span>
+<span class="cstat-no" title="statement not covered">	return proxy;</span>
 }
 &nbsp;
-<span class="fstat-no" title="function not covered" >function normalizeArguments(url, opts) {</span>
-<span class="cstat-no" title="statement not covered" >	if (typeof url !== 'string' &amp;&amp; typeof url !== 'object') {</span>
-<span class="cstat-no" title="statement not covered" >		throw new Error(`Parameter \`url\` must be a string or object, not ${typeof url}`);</span>
+<span class="fstat-no" title="function not covered">function normalizeArguments(url, opts) {</span>
+<span class="cstat-no" title="statement not covered">	if (typeof url !== 'string' &amp;&amp; typeof url !== 'object') {</span>
+<span class="cstat-no" title="statement not covered">		throw new Error(`Parameter \`url\` must be a string or object, not ${typeof url}`);</span>
 	}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	if (typeof url === 'string') {</span>
-<span class="cstat-no" title="statement not covered" >		url = url.replace(/^unix:/, 'http://$&amp;');</span>
-<span class="cstat-no" title="statement not covered" >		url = urlParseLax(url);</span>
+<span class="cstat-no" title="statement not covered">	if (typeof url === 'string') {</span>
+<span class="cstat-no" title="statement not covered">		url = url.replace(/^unix:/, 'http://$&amp;');</span>
+<span class="cstat-no" title="statement not covered">		url = urlParseLax(url);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		if (url.auth) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new Error('Basic authentication must be done with auth option');</span>
+<span class="cstat-no" title="statement not covered">		if (url.auth) {</span>
+<span class="cstat-no" title="statement not covered">			throw new Error('Basic authentication must be done with auth option');</span>
 		}
 	}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	opts = Object.assign(</span>
+<span class="cstat-no" title="statement not covered">	opts = Object.assign(</span>
 		{
 			protocol: 'http:',
 			path: '',
@@ -1162,92 +1160,92 @@ const pkg = require('./package');
 		opts
 	);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	opts.headers = Object.assign({</span>
+<span class="cstat-no" title="statement not covered">	opts.headers = Object.assign({</span>
 		'user-agent': `${pkg.name}/${pkg.version} (https://github.com/sindresorhus/got)`,
 		'accept-encoding': 'gzip,deflate'
 	}, lowercaseKeys(opts.headers));
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	const query = opts.query;</span>
+<span class="cstat-no" title="statement not covered">	const query = opts.query;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	if (query) {</span>
-<span class="cstat-no" title="statement not covered" >		if (typeof query !== 'string') {</span>
-<span class="cstat-no" title="statement not covered" >			opts.query = querystring.stringify(query);</span>
+<span class="cstat-no" title="statement not covered">	if (query) {</span>
+<span class="cstat-no" title="statement not covered">		if (typeof query !== 'string') {</span>
+<span class="cstat-no" title="statement not covered">			opts.query = querystring.stringify(query);</span>
 		}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		opts.path = `${opts.path.split('?')[0]}?${opts.query}`;</span>
-<span class="cstat-no" title="statement not covered" >		delete opts.query;</span>
+<span class="cstat-no" title="statement not covered">		opts.path = `${opts.path.split('?')[0]}?${opts.query}`;</span>
+<span class="cstat-no" title="statement not covered">		delete opts.query;</span>
 	}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	if (opts.json &amp;&amp; opts.headers.accept === undefined) {</span>
-<span class="cstat-no" title="statement not covered" >		opts.headers.accept = 'application/json';</span>
+<span class="cstat-no" title="statement not covered">	if (opts.json &amp;&amp; opts.headers.accept === undefined) {</span>
+<span class="cstat-no" title="statement not covered">		opts.headers.accept = 'application/json';</span>
 	}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	let body = opts.body;</span>
+<span class="cstat-no" title="statement not covered">	let body = opts.body;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	if (body) {</span>
-<span class="cstat-no" title="statement not covered" >		if (typeof body !== 'string' &amp;&amp; !(body !== null &amp;&amp; typeof body === 'object')) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new Error('options.body must be a ReadableStream, string, Buffer or plain Object');</span>
+<span class="cstat-no" title="statement not covered">	if (body) {</span>
+<span class="cstat-no" title="statement not covered">		if (typeof body !== 'string' &amp;&amp; !(body !== null &amp;&amp; typeof body === 'object')) {</span>
+<span class="cstat-no" title="statement not covered">			throw new Error('options.body must be a ReadableStream, string, Buffer or plain Object');</span>
 		}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		opts.method = opts.method || 'POST';</span>
+<span class="cstat-no" title="statement not covered">		opts.method = opts.method || 'POST';</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		if (isStream(body) &amp;&amp; typeof body.getBoundary === 'function') {</span>
+<span class="cstat-no" title="statement not covered">		if (isStream(body) &amp;&amp; typeof body.getBoundary === 'function') {</span>
 			// Special case for https://github.com/form-data/form-data
-<span class="cstat-no" title="statement not covered" >			opts.headers['content-type'] = opts.headers['content-type'] || `multipart/form-data; boundary=${body.getBoundary()}`;</span>
-		} else <span class="cstat-no" title="statement not covered" >if (body !== null &amp;&amp; typeof body === 'object' &amp;&amp; !Buffer.isBuffer(body) &amp;&amp; !isStream(body)) {</span>
-<span class="cstat-no" title="statement not covered" >			opts.headers['content-type'] = opts.headers['content-type'] || 'application/x-www-form-urlencoded';</span>
-<span class="cstat-no" title="statement not covered" >			body = opts.body = querystring.stringify(body);</span>
+<span class="cstat-no" title="statement not covered">			opts.headers['content-type'] = opts.headers['content-type'] || `multipart/form-data; boundary=${body.getBoundary()}`;</span>
+		} else <span class="cstat-no" title="statement not covered">if (body !== null &amp;&amp; typeof body === 'object' &amp;&amp; !Buffer.isBuffer(body) &amp;&amp; !isStream(body)) {</span>
+<span class="cstat-no" title="statement not covered">			opts.headers['content-type'] = opts.headers['content-type'] || 'application/x-www-form-urlencoded';</span>
+<span class="cstat-no" title="statement not covered">			body = opts.body = querystring.stringify(body);</span>
 		}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		if (opts.headers['content-length'] === undefined &amp;&amp; opts.headers['transfer-encoding'] === undefined &amp;&amp; !isStream(body)) {</span>
-<span class="cstat-no" title="statement not covered" >			const length = typeof body === 'string' ? Buffer.byteLength(body) : body.length;</span>
-<span class="cstat-no" title="statement not covered" >			opts.headers['content-length'] = length;</span>
-		}
-	}
-&nbsp;
-<span class="cstat-no" title="statement not covered" >	opts.method = (opts.method || 'GET').toUpperCase();</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >	if (opts.hostname === 'unix') {</span>
-<span class="cstat-no" title="statement not covered" >		const matches = /(.+):(.+)/.exec(opts.path);</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >		if (matches) {</span>
-<span class="cstat-no" title="statement not covered" >			opts.socketPath = matches[1];</span>
-<span class="cstat-no" title="statement not covered" >			opts.path = matches[2];</span>
-<span class="cstat-no" title="statement not covered" >			opts.host = null;</span>
+<span class="cstat-no" title="statement not covered">		if (opts.headers['content-length'] === undefined &amp;&amp; opts.headers['transfer-encoding'] === undefined &amp;&amp; !isStream(body)) {</span>
+<span class="cstat-no" title="statement not covered">			const length = typeof body === 'string' ? Buffer.byteLength(body) : body.length;</span>
+<span class="cstat-no" title="statement not covered">			opts.headers['content-length'] = length;</span>
 		}
 	}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	if (typeof opts.retries !== 'function') {</span>
-<span class="cstat-no" title="statement not covered" >		const retries = opts.retries;</span>
+<span class="cstat-no" title="statement not covered">	opts.method = (opts.method || 'GET').toUpperCase();</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >		opts.retries = (iter, err) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >			if (iter &gt; retries || !isRetryAllowed(err)) {</span>
-<span class="cstat-no" title="statement not covered" >				return 0;</span>
+<span class="cstat-no" title="statement not covered">	if (opts.hostname === 'unix') {</span>
+<span class="cstat-no" title="statement not covered">		const matches = /(.+):(.+)/.exec(opts.path);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">		if (matches) {</span>
+<span class="cstat-no" title="statement not covered">			opts.socketPath = matches[1];</span>
+<span class="cstat-no" title="statement not covered">			opts.path = matches[2];</span>
+<span class="cstat-no" title="statement not covered">			opts.host = null;</span>
+		}
+	}
+&nbsp;
+<span class="cstat-no" title="statement not covered">	if (typeof opts.retries !== 'function') {</span>
+<span class="cstat-no" title="statement not covered">		const retries = opts.retries;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">		opts.retries = (iter, err) =&gt; {</span>
+<span class="cstat-no" title="statement not covered">			if (iter &gt; retries || !isRetryAllowed(err)) {</span>
+<span class="cstat-no" title="statement not covered">				return 0;</span>
 			}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >			const noise = Math.random() * 100;</span>
+<span class="cstat-no" title="statement not covered">			const noise = Math.random() * 100;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >			return ((1 &lt;&lt; iter) * 1000) + noise;</span>
+<span class="cstat-no" title="statement not covered">			return ((1 &lt;&lt; iter) * 1000) + noise;</span>
 		};
 	}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	if (opts.followRedirect === undefined) {</span>
-<span class="cstat-no" title="statement not covered" >		opts.followRedirect = true;</span>
+<span class="cstat-no" title="statement not covered">	if (opts.followRedirect === undefined) {</span>
+<span class="cstat-no" title="statement not covered">		opts.followRedirect = true;</span>
 	}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	if (opts.timeout) {</span>
-<span class="cstat-no" title="statement not covered" >		opts.gotTimeout = opts.timeout;</span>
-<span class="cstat-no" title="statement not covered" >		delete opts.timeout;</span>
+<span class="cstat-no" title="statement not covered">	if (opts.timeout) {</span>
+<span class="cstat-no" title="statement not covered">		opts.gotTimeout = opts.timeout;</span>
+<span class="cstat-no" title="statement not covered">		delete opts.timeout;</span>
 	}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	return opts;</span>
+<span class="cstat-no" title="statement not covered">	return opts;</span>
 }
 &nbsp;
-<span class="fstat-no" title="function not covered" >function got(url, opts) {</span>
-<span class="cstat-no" title="statement not covered" >	try {</span>
-<span class="cstat-no" title="statement not covered" >		return asPromise(normalizeArguments(url, opts));</span>
+<span class="fstat-no" title="function not covered">function got(url, opts) {</span>
+<span class="cstat-no" title="statement not covered">	try {</span>
+<span class="cstat-no" title="statement not covered">		return asPromise(normalizeArguments(url, opts));</span>
 	} catch (err) {
-<span class="cstat-no" title="statement not covered" >		return Promise.reject(err);</span>
+<span class="cstat-no" title="statement not covered">		return Promise.reject(err);</span>
 	}
 }
 &nbsp;
@@ -1261,21 +1259,21 @@ const helpers = [
 ];
 &nbsp;
 helpers.forEach(el =&gt; {
-	got[el] = (url, opts) =&gt; <span class="cstat-no" title="statement not covered" >got(url, Object.assign({}, opts, {method: el}));</span>
+	got[el] = (url, opts) =&gt; <span class="cstat-no" title="statement not covered">got(url, Object.assign({}, opts, {method: el}));</span>
 });
 &nbsp;
-got.stream = (url, opts) =&gt; <span class="cstat-no" title="statement not covered" >asStream(normalizeArguments(url, opts));</span>
+got.stream = (url, opts) =&gt; <span class="cstat-no" title="statement not covered">asStream(normalizeArguments(url, opts));</span>
 &nbsp;
 for (const el of helpers) {
-	got.stream[el] = (url, opts) =&gt; <span class="cstat-no" title="statement not covered" >got.stream(url, Object.assign({}, opts, {method: el}));</span>
+	got.stream[el] = (url, opts) =&gt; <span class="cstat-no" title="statement not covered">got.stream(url, Object.assign({}, opts, {method: el}));</span>
 }
 &nbsp;
-<span class="fstat-no" title="function not covered" >function stdError(error, opts) {</span>
-<span class="cstat-no" title="statement not covered" >	if (error.code !== undefined) {</span>
-<span class="cstat-no" title="statement not covered" >		this.code = error.code;</span>
+<span class="fstat-no" title="function not covered">function stdError(error, opts) {</span>
+<span class="cstat-no" title="statement not covered">	if (error.code !== undefined) {</span>
+<span class="cstat-no" title="statement not covered">		this.code = error.code;</span>
 	}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	Object.assign(this, {</span>
+<span class="cstat-no" title="statement not covered">	Object.assign(this, {</span>
 		message: error.message,
 		host: opts.host,
 		hostname: opts.hostname,
@@ -1286,34 +1284,35 @@ for (const el of helpers) {
 &nbsp;
 got.RequestError = createErrorClass('RequestError', stdError);
 got.ReadError = createErrorClass('ReadError', stdError);
-got.ParseError = createErrorClass('ParseError', <span class="fstat-no" title="function not covered" >function (e, statusCode, opts, data) {</span>
-<span class="cstat-no" title="statement not covered" >	stdError.call(this, e, opts);</span>
-<span class="cstat-no" title="statement not covered" >	this.statusCode = statusCode;</span>
-<span class="cstat-no" title="statement not covered" >	this.statusMessage = http.STATUS_CODES[this.statusCode];</span>
-<span class="cstat-no" title="statement not covered" >	this.message = `${e.message} in "${urlLib.format(opts)}": \n${data.slice(0, 77)}...`;</span>
+got.ParseError = createErrorClass('ParseError', <span class="fstat-no" title="function not covered">function (e, statusCode, opts, data) {</span>
+<span class="cstat-no" title="statement not covered">	stdError.call(this, e, opts);</span>
+<span class="cstat-no" title="statement not covered">	this.statusCode = statusCode;</span>
+<span class="cstat-no" title="statement not covered">	this.statusMessage = http.STATUS_CODES[this.statusCode];</span>
+<span class="cstat-no" title="statement not covered">	this.message = `${e.message} in "${urlLib.format(opts)}": \n${data.slice(0, 77)}...`;</span>
 });
 &nbsp;
-got.HTTPError = createErrorClass('HTTPError', <span class="fstat-no" title="function not covered" >function (statusCode, opts) {</span>
-<span class="cstat-no" title="statement not covered" >	stdError.call(this, {}, opts);</span>
-<span class="cstat-no" title="statement not covered" >	this.statusCode = statusCode;</span>
-<span class="cstat-no" title="statement not covered" >	this.statusMessage = http.STATUS_CODES[this.statusCode];</span>
-<span class="cstat-no" title="statement not covered" >	this.message = `Response code ${this.statusCode} (${this.statusMessage})`;</span>
+got.HTTPError = createErrorClass('HTTPError', <span class="fstat-no" title="function not covered">function (statusCode, opts) {</span>
+<span class="cstat-no" title="statement not covered">	stdError.call(this, {}, opts);</span>
+<span class="cstat-no" title="statement not covered">	this.statusCode = statusCode;</span>
+<span class="cstat-no" title="statement not covered">	this.statusMessage = http.STATUS_CODES[this.statusCode];</span>
+<span class="cstat-no" title="statement not covered">	this.message = `Response code ${this.statusCode} (${this.statusMessage})`;</span>
 });
 &nbsp;
-got.MaxRedirectsError = createErrorClass('MaxRedirectsError', <span class="fstat-no" title="function not covered" >function (statusCode, opts) {</span>
-<span class="cstat-no" title="statement not covered" >	stdError.call(this, {}, opts);</span>
-<span class="cstat-no" title="statement not covered" >	this.statusCode = statusCode;</span>
-<span class="cstat-no" title="statement not covered" >	this.statusMessage = http.STATUS_CODES[this.statusCode];</span>
-<span class="cstat-no" title="statement not covered" >	this.message = 'Redirected 10 times. Aborting.';</span>
+got.MaxRedirectsError = createErrorClass('MaxRedirectsError', <span class="fstat-no" title="function not covered">function (statusCode, opts) {</span>
+<span class="cstat-no" title="statement not covered">	stdError.call(this, {}, opts);</span>
+<span class="cstat-no" title="statement not covered">	this.statusCode = statusCode;</span>
+<span class="cstat-no" title="statement not covered">	this.statusMessage = http.STATUS_CODES[this.statusCode];</span>
+<span class="cstat-no" title="statement not covered">	this.message = 'Redirected 10 times. Aborting.';</span>
 });
 &nbsp;
 module.exports = got;
 &nbsp;
 &nbsp;</pre></td></tr>
-</table></pre>
+</tbody></table></pre>
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Tue Apr 11 2017 08:53:02 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Mon Apr 17 2017 11:18:09 GMT+0000 (UTC)</div>
 </div>
-</body>
-</html>
+
+
+</body></html>
